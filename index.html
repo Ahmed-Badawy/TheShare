@@ -25,24 +25,45 @@
 
 
 
-<h1>Sharing Buttons</h1>
+<h3><span class='fa fa-lg fa-share-alt-square'></span> Sharing Buttons</h3>
 
+<a class="social_share_link btn btn-default fa fa-facebook-square fa-lg" href='' shareType="facebook-old"> Facebook Old</a>
 <a class="social_share_link btn btn-default fa fa-facebook-square fa-lg" href='' shareType="facebook"> Facebook</a>
+<a class="social_share_link btn btn-default fa fa-facebook-square fa-lg" href='' shareType="facebook-app"> Facebook Dialog</a>
+
 <a class='social_share_link btn btn-default fa fa-twitter-square fa-lg' href='' shareType="twitter"> Twitter</a>
-<a class='social_share_link btn btn-default fa fa-google-plus-square fa-lg' href='' shareType="google-plus"> Google+</a>
-<a class='social_share_link btn btn-default fa fa-linkedin-square fa-lg' href='' shareType="linked-in"> Linked-In</a>
+<a class='social_share_link btn btn-default fa fa-google-plus-square fa-lg' href='' shareType="google+"> Google+</a>
+<a class='social_share_link btn btn-default fa fa-linkedin-square fa-lg' href='' shareType="linkedin"> Linked-In</a>
 <a class='social_share_link btn btn-default fa fa-pinterest-square fa-lg' href='' shareType="pinterest"> Pinterest</a>
 <a class='social_share_link btn btn-default fa fa-stumbleupon fa-lg' href='' shareType="stumbleupon"> stumbleUpon</a>
 <a class='social_share_link btn btn-default fa fa-vk fa-lg' href='' shareType="vk"> VK</a>
 <a class='social_share_link btn btn-default fa fa-xing-square fa-lg' href='' shareType="xing"> Xing</a>
 <a class='social_share_link btn btn-default fa fa-tumblr-square fa-lg' href='' shareType="tumblr"> Tumblr</a>
-<a class='social_share_link btn btn-default fa fa-reddit-square fa-lg' href='' shareType="reddit"> Reddit</a>
+<a class='social_share_link btn btn-default fa fa-reddit-square fa-lg' href='' shareType="reddit-link"> Reddit Link</a>
+<a class='social_share_link btn btn-default fa fa-reddit-square fa-lg' href='' shareType="reddit-text"> Reddit text</a>
 
+<a class='social_share_link btn btn-default fa fa-question fa-lg' href='' shareType="buffer"> Buffer</a>
+<a class='social_share_link btn btn-default fa fa-digg fa-lg' href='' shareType="digg"> Digg</a>
+<a class='social_share_link btn btn-default fa fa-question fa-lg' href='' shareType="plurk">  plurk</a>
+<a class='social_share_link btn btn-default fa fa-delicious fa-lg' href='' shareType="delicious">  delicious</a>
+
+
+<!-- <a class='social_share_link btn btn-default fa fa-question fa-lg' href='' shareType="fark">  fark</a> -->
+<!-- <a class='social_share_link btn btn-default fa fa-question fa-lg' href='' shareType="blinklist">  blinklist</a> -->
+
+
+<!--  fark, blinklist, plurk -->
+
+
+
+
+<h3 class='page-header'><span class='fa fa-lg fa-android'></span> Android</h3>
 <a class='social_share_link btn btn-default fa fa-whatsapp fa-lg' href='' shareType="whatsapp"> Send on Whatsapp</a>
 <a class='social_share_link btn btn-default fa fa-map-marker fa-lg' href='' shareType="google_maps"> Open in Google-Maps</a>
 <a class='social_share_link btn btn-default fa fa-envelope fa-lg' href='' shareType="email"> Send Email</a>
 <a class='social_share_link btn btn-default fa fa-phone-square fa-lg' href='' shareType="call_phone"> Call Phone</a>
 <a class='social_share_link btn btn-default fa fa-tablet fa-lg' href='' shareType="internet_call"> Call In Skype Or Viper</a>
+
 
 
 
@@ -52,54 +73,95 @@
     title       : "Ahmed-Badawy's C.V (Please Read Me)",
     text        : " -!--Ahmed Badawy - أحمد بدوى--!- Hello! This is My C.V : http://ahmed-badawy.com/site/cv",
     img         : "http://ahmed-badawy.com/site/public/site-imgs/site/logo.jpg",
-    phone_num   : "01111988246",
-    google_maps : "30,31",
+
+		facebook_app_id : '715112605276746',
+		facebook_redirect_uri : 'http://ahmed-badawy.com/cv',
+
+		twitter_hashtags : "hashtag1,hashtag2,hashtag3",
+		twitter_via : "ahmed_badawy_x", //tag a preson
+		// twitter_related : "wikidsystems,ahmed_badawy_x", //users related to the post
+
+		android_phone_num   : "01111988246",
+		android_google_maps_acc : "30,31",
   };
 
 
-  shared_data.prepared_url = encodeURIComponent(shared_data.url);
-  shared_data.prepared_img = encodeURIComponent(shared_data.img);
 
-  function get_share_link(share_type){
-      var $link;
+  function get_share_link(share_type,shared_data){
 
-      if(share_type=="facebook") $link = "https://www.facebook.com/sharer/sharer.php?u="+shared_data.prepared_url;
+		shared_data.prepared_url = encodeURIComponent(shared_data.url);
+		shared_data.prepared_img = encodeURIComponent(shared_data.img);
+		shared_data.prepared_title = encodeURIComponent(shared_data.title);
+		shared_data.prepared_text = encodeURIComponent(shared_data.text);
 
-      if(share_type=="twitter") $link = "http://twitter.com/home?status="+shared_data.text;
+    var $link;
 
-      if(share_type=="google-plus") $link = "https://plus.google.com/share?url="+shared_data.prepared_url+"&gpsrc=frameless";
+    if(share_type=='facebook-old') $link= `https://www.facebook.com/sharer/sharer.php?u=${shared_data.prepared_url}&src=${shared_data.prepared_title}`;
 
-      if(share_type=="linked-in") $link = "https://www.linkedin.com/shareArticle?mini=true&url="+shared_data.prepared_url+"&title="+shared_data.title+"&summary="+shared_data.text+"";
+    else if(share_type=='facebook') $link= `http://www.facebook.com/sharer.php?s=100&p[url]=${shared_data.prepared_url}&p[images][0]=${shared_data.prepared_img}&p[title]=${shared_data.prepared_title}&p[summary]=${shared_data.prepared_text}`;
 
-      if(share_type=="pinterest") $link = "https://www.pinterest.com/pin/create/button/?url="+shared_data.prepared_url+"&media=$img&description="+shared_data.text+"";
+		else if(share_type=='facebook-dialog') $link= `https://www.facebook.com/dialog/share?app_id=${shared_data.facebook_app_id}&display=page&href=${shared_data.prepared_url}&redirect_uri=${shared_data.facebook_redirect_uri}`;
 
-      if(share_type=="stumbleupon") $link = "http://www.stumbleupon.com/submit?url="+shared_data.prepared_url+"&title="+shared_data.title+"";
+    else if(share_type=='twitter') $link=  `https://twitter.com/intent/tweet?url=${shared_data.prepared_url}&text=${shared_data.prepared_title}&via=${shared_data.twitter_via}&hashtags=${shared_data.twitter_hashtags}&related=${shared_data.twitter_related}`;
+		// if(share_type=="twitter") $link = "http://twitter.com/home?status="+shared_data.text;
 
-			if(share_type=="vk") $link = "https://vk.com/share.php?url="+shared_data.prepared_url+"&title="+shared_data.title+"&description="+shared_data.text+"&image=$img&noparse=true";
+		else if(share_type=='google+') $link= `https://plus.google.com/share?url=${shared_data.prepared_url}&gpsrc=frameless`;
 
-			if(share_type=="xing") $link = "https://www.xing-share.com/app/user?op=share;sc_p=xing-share;url="+shared_data.prepared_url+"";
+    else if(share_type=="linkedin") $link = "https://www.linkedin.com/shareArticle?mini=true&url="+shared_data.url+"&title="+shared_data.title+"&summary="+shared_data.prepared_text;
 
-			if(share_type=="tumblr") $link = "http://www.tumblr.com/share/link?url="+shared_data.prepared_url+"&title="+shared_data.title+"&description="+shared_data.text+"";
+    else if(share_type=="pinterest") $link = "https://www.pinterest.com/pin/create/button/?url="+shared_data.prepared_url+"&media="+shared_data.img+"&description="+shared_data.prepared_text;
 
-			if(share_type=="reddit") $link = "http://www.reddit.com/submit?url="+shared_data.prepared_url+"&title="+shared_data.title+"";
+		else if(share_type=="stumbleupon") $link = "http://www.stumbleupon.com/submit?url="+shared_data.prepared_url+"&title="+shared_data.title;
 
-			if(share_type=="whatsapp") $link = "whatsapp://send?text="+shared_data.text+"";
+		else if(share_type=="vk") $link = "https://vk.com/share.php?url="+shared_data.prepared_url+"&title="+shared_data.title+"&description="+shared_data.prepared_text+"&image="+shared_data.img+"&noparse=true";
 
-			if(share_type=="email") $link = "mailto:?subject="+shared_data.title+"&body="+shared_data.text+"";
+		else if(share_type=="xing") $link = "https://www.xing-share.com/app/user?op=share;sc_p=xing-share;url="+shared_data.prepared_url;
 
-			if(share_type=="call_phone") $link = "tel:"+shared_data.phone_num;
+		else if(share_type=="tumblr") $link = "http://www.tumblr.com/share/link?url="+shared_data.prepared_url+"&title="+shared_data.prepared_title+"&description="+shared_data.prepared_text;
+ //`http://tumblr.com/widgets/share/tool?canonicalUrl=${url}&url=${url}&posttype=link&title=${title}&caption=${cap}&content=${cont}`;
 
-			if(share_type=="internet_call") $link = "callTo:"+shared_data.phone_num;
 
-			if(share_type=="google_maps") $link = "geo:"+shared_data.google_maps;
+		else if(share_type=="reddit-text") $link = "http://www.reddit.com/submit?title="+shared_data.title+"&kind=text&text="+shared_data.text;
+
+		else if(share_type=="reddit-link") $link = "http://www.reddit.com/submit?title="+shared_data.title+"kind=link&url="+shared_data.prepared_url;
+
+		else if(share_type=='buffer') $link = `http://bufferapp.com/add?text=${shared_data.text}&url=${shared_data.prepared_url}`;
+
+		else if(share_type=='digg') $link = `http://digg.com/submit?url=${shared_data.prepared_url}&title=${shared_data.prepared_url}`;
+
+		else if(share_type=='delicious') $link = `https://delicious.com/save?v=5&provider=${shared_data.prepared_url}&noui&jump=close&url=${shared_data.prepared_url}&title=${shared_data.title}`;
+
+		// else if(share_type=="friendfeed") $link = "http://www.friendfeed.com/share?url="+ shared_data.prepared_url + "&title=" + shared_data.prepared_title;
+
+		// else if(share_type=="fark") $link = "http://cgi.fark.com/cgi/fark/farkit.pl?u="+ shared_data.prepared_url + "&h=" + shared_data.prepared_title;
+
+		// else if(share_type=="blinklist") $link = "http://www.blinklist.com/index.php?Action=Blink/Addblink.php&Url="+ shared_data.prepared_url + "&Title=" + shared_data.prepared_title;
+		//
+		else if(share_type=="plurk") $link = "http://plurk.com/?qualifier=shares&status=" + shared_data.prepared_title + "%20%2D%20" + shared_data.prepared_url;
+
+
+
+
+//---------------------Android----------------------
+		else if(share_type=="email") $link = "mailto:?subject="+shared_data.title+"&body="+shared_data.text;
+
+		else if(share_type=="whatsapp") $link = "whatsapp://send?text="+shared_data.text;
+
+		else if(share_type=="call_phone") $link = "tel:"+shared_data.android_phone_num;
+
+		else if(share_type=="internet_call") $link = "callTo:"+shared_data.android_phone_num;
+
+		else if(share_type=="google_maps") $link = "geo:"+shared_data.android_google_maps_acc;
+//--------------------------------------------------
+
       return $link;
   }
 
-    function centeredPopup(url,winName,w,h,scroll){
+    function centeredPopup(url,winName){
+			var w = 800, h = 600;
       LeftPosition = (screen.width) ? (screen.width-w)/2 : 0;
       TopPosition = (screen.height) ? (screen.height-h)/2 : 0;
-      settings =
-      'height='+h+',width='+w+',top='+TopPosition+',left='+LeftPosition+',scrollbars='+scroll+',resizable'
+      settings = `menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600,top=${TopPosition},left=${LeftPosition}`;
       popupWindow = window.open(url,winName,settings);
     }
 
@@ -108,10 +170,8 @@
       tags[i].addEventListener('click',function(evt){
             evt.preventDefault();
             share_type = this.getAttribute('shareType');
-            link = get_share_link(share_type);
-            console.log(link);
-            num = Math.random();
-            centeredPopup(link, num+"toString" ,'700','300','yes');
+            link = get_share_link(share_type,shared_data);
+            centeredPopup(link, Math.random()+"toString");
             return false;
       },false);
     }
