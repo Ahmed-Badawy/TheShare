@@ -59,8 +59,9 @@
 //---------------------Android----------------------
 		else if(share_type=="whatsapp") $link = `whatsapp://send?text=${shared_data.text}`;
 		else if(share_type=="call_phone") $link = `tel:${shared_data.android_phone_num}`;
-		else if(share_type=="internet_call") $link = `callTo:${shared_data.android_phone_num}`;
-		else if(share_type=="google_maps") $link = `geo:${shared_data.android_google_maps_acc}`;
+		else if(share_type=="internet_call") $link = `callTo:${shared_data.phone_num}`;
+    else if(share_type=="viber") $link = `viber://add?number=${shared_data.phone_num}`;
+		else if(share_type=="google_maps") $link = `geo:${shared_data.google_maps_acc}`;
 //---------------------IOS----------------------
 else if(share_type=="telegram") $link = `tg://msg?text=${shared_data.text}`;
 //--------------------------------------------------
