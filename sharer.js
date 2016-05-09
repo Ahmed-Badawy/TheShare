@@ -65,6 +65,7 @@
 else if(share_type=="telegram") $link = `tg://msg?text=${shared_data.text}`;
 //--------------------------------------------------
 
+
       return $link;
   }
 
