@@ -15,7 +15,7 @@
 
 		else if(share_type=='facebook-dialog') $link= `https://www.facebook.com/dialog/share?app_id=${shared_data.facebook_app_id}&display=page&href=${shared_data.prepared_url}&redirect_uri=${shared_data.facebook_redirect_uri}`;
 
-    else if(share_type=='twitter') $link=  `https://twitter.com/intent/tweet?url=${shared_data.prepared_url}&text=${shared_data.prepared_title}&via=${shared_data.twitter_via}&hashtags=${shared_data.twitter_hashtags}&related=${shared_data.twitter_related}`;
+    else if(share_type=='twitter') $link=  `https://twitter.com/intent/tweet?url=${shared_data.prepared_url}&text=${shared_data.prepared_title}&via=${shared_data.twitter_via}&hashtags=${shared_data.tags}&related=${shared_data.twitter_related}`;
 		// if(share_type=="twitter") $link = "http://twitter.com/home?status="+shared_data.text;
 
 		else if(share_type=='google+') $link= `https://plus.google.com/share?url=${shared_data.prepared_url}&gpsrc=frameless`;
@@ -30,7 +30,7 @@
 
 		else if(share_type=="xing") $link = `https://www.xing-share.com/app/user?op=share;sc_p=xing-share;url=${shared_data.prepared_url}`;
 
-		else if(share_type=="tumblr") $link = `http://www.tumblr.com/share/link?url=${shared_data.prepared_url}&title=${shared_data.prepared_title}&description=${shared_data.prepared_text}`;
+		else if(share_type=="tumblr") $link = `http://www.tumblr.com/share/link?url=${shared_data.prepared_url}&title=${shared_data.prepared_title}&description=${shared_data.prepared_text}&tags=${shared_data.tags}`;
     //http://tumblr.com/widgets/share/tool?canonicalUrl=${url}&url=${url}&posttype=link&title=${title}&caption=${cap}&content=${cont}`;
 
 
@@ -52,18 +52,48 @@
 		//
 		else if(share_type=="plurk") $link = `http://plurk.com/?qualifier=shares&status=${shared_data.prepared_title}%20%2D%20${shared_data.prepared_url}`;
 
+    else if(share_type=="hackernews") $link = `https://news.ycombinator.com/submitlink?u=${shared_data.prepared_url}&t=${shared_data.prepaprepared_title}`
+
+    else if(share_type=="instapaper") $link = `https://www.instapaper.com/edit?url=${shared_data.prepared_url}&title=${shared_data.prepared_title}&description=${shared_data.prepared_text}`
+
+    else if(share_type=="pocket") $link = `https://getpocket.com/edit?url=${shared_data.prepared_url}`
+
+    else if(share_type=="flipboard") $link = `https://share.flipboard.com/bookmarklet/popout?v=2&title=${shared_data.prepared_title}&url=${shared_data.prepared_url}&t=1462828167337`
+
+    else if(share_type=="weibo") $link = `http://service.weibo.com/share/share.php?url=${shared_data.prepared_url}&title=${shared_data.prepared_title}&&&&language=zh_cn`;
+
+
+    else if(share_type=="renren") $link = `http://www.renren.com/SysHome.do?origURL=http%3A%2F%2Fshare.renren.com%2Fshare%2Fbuttonshare%3Flink%3D${shared_data.prepared_url}`
+
+    else if(share_type=="myspace") $link = `https://myspace.com/post?u=${shared_data.prepared_url}&t=${shared_data.prepared_title}&c=${shared_data.prepared_text}`
+
+    else if(share_type=="blogger") $link = `https://www.blogger.com/blog-this.g?u=${shared_data.prepared_url}&n=${shared_data.prepared_title}&t=${shared_data.prepared_text}`
+
+    else if(share_type=="baidu") $link = `http://cang.baidu.com/do/add?it=${shared_data.prepared_title}&iu=${shared_data.prepared_url}`
+
+
+
+
     else if(share_type=="email") $link = `mailto:${shared_data.send_to_email}?subject=${shared_data.title}&body=${shared_data.text}`;
 
 
 
 //---------------------Android----------------------
 		else if(share_type=="whatsapp") $link = `whatsapp://send?text=${shared_data.text}`;
-		else if(share_type=="call_phone") $link = `tel:${shared_data.android_phone_num}`;
-		else if(share_type=="internet_call") $link = `callTo:${shared_data.phone_num}`;
+
+    else if(share_type=="call_phone") $link = `tel:${shared_data.android_phone_num}`;
+
+    else if(share_type=="internet_call") $link = `callTo:${shared_data.phone_num}`;
+
     else if(share_type=="viber") $link = `viber://add?number=${shared_data.phone_num}`;
-		else if(share_type=="google_maps") $link = `geo:${shared_data.google_maps_acc}`;
+
+    else if(share_type=="google_maps") $link = `geo:${shared_data.google_maps_acc}`;
+
+    else if(share_type=="line") $link = `https://line.me/en-US/?${shared_data.prepared_text}`
+    //http://line.me/en-US/?Sharer.js%2520is%2520the%2520ultimate%2520sharer%2520js%2520lib%2520https%253A%252F%252Fellisonleao.github.io%252Fsharer.js%252F
+    
 //---------------------IOS----------------------
-else if(share_type=="telegram") $link = `tg://msg?text=${shared_data.text}`;
+    else if(share_type=="telegram") $link = `tg://msg?text=${shared_data.text}`;
 //--------------------------------------------------
 
 
