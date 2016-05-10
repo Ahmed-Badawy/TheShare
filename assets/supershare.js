@@ -72,9 +72,13 @@
     else if(share_type=="baidu") $link = `http://cang.baidu.com/do/add?it=${shared_data.prepared_title}&iu=${shared_data.prepared_url}`
 
 
-
-
+//---------------------General----------------------
     else if(share_type=="email") $link = `mailto:${shared_data.send_to_email}?subject=${shared_data.title}&body=${shared_data.text}`;
+
+    else if(share_type=="print") { window.print(); return false; }
+
+    else if(share_type=="bookmark") { get_add_to_bookmarks_link(shared_data); return false; }
+    else if(share_type=="bookmark-current") { get_add_to_bookmarks_link(false); return false; }
 
 
 
@@ -111,4 +115,42 @@
       TopPosition = (screen.height) ? (screen.height-h)/2 : 0;
       settings = `menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600,top=${TopPosition},left=${LeftPosition}`;
       popupWindow = window.open(url,winName,settings);
+    }
+
+
+    function get_add_to_bookmarks_link(shared_data){
+      if(shared_data){
+        var bookmarkURL = shared_data.url;
+        var bookmarkTitle = shared_data.title;
+      }else{
+        var bookmarkURL = window.location.href;
+        var bookmarkTitle = document.title;
+      }
+
+      if ('addToHomescreen' in window && window.addToHomescreen.isCompatible) {
+        // Mobile browsers
+        addToHomescreen({ autostart: false, startDelay: 0 }).show(true);
+      } else if (window.sidebar && window.sidebar.addPanel) {
+        // Firefox version < 23
+        window.sidebar.addPanel(bookmarkTitle, bookmarkURL, '');
+      } else if ((window.sidebar && /Firefox/i.test(navigator.userAgent)) || (window.opera && window.print)) {
+        // Firefox version >= 23 and Opera Hotlist
+        console.log("hello");
+        document.getElementById('bookmarkthis').setAttribute('href',bookmarkURL)
+        document.getElementById('bookmarkthis').setAttribute('title',bookmarkTitle);
+        document.getElementById('bookmarkthis').setAttribute('rel',"sidebar");
+          // $('#bookmarkthis').attr({
+          //   href: bookmarkURL,
+          //   title: bookmarkTitle,
+          //   rel: 'sidebar'
+          // }).off(e);
+        return true;
+      } else if (window.external && ('AddFavorite' in window.external)) {
+        // IE Favorite
+        window.external.AddFavorite(bookmarkURL, bookmarkTitle);
+      } else {
+        // Other browsers (mainly WebKit - Chrome/Safari)
+        alert('Press ' + (/Mac/i.test(navigator.userAgent) ? 'Cmd' : 'Ctrl') + '+D to bookmark this page.');
+      }
+      return false;
     }

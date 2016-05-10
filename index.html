@@ -12,9 +12,8 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 
-<!-- Latest compiled and minified JavaScript -->
 <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
 
 <style>
   .btn{
@@ -68,7 +67,16 @@
 <!-- <a class='social_share_link btn btn-default fa fa-question fa-lg' href='' shareType="fark">  fark</a> -->
 <!-- <a class='social_share_link btn btn-default fa fa-question fa-lg' href='' shareType="blinklist">  blinklist</a> -->
 
+
 <a class='social_share_link btn btn-default fa fa-envelope fa-lg' href='' shareType="email"> Send Email</a>
+
+<a class='social_share_link btn btn-default fa fa-print fa-lg' href="" shareType="print"> Print Current Page</a>
+
+<a id='bookmarkthis' class='social_share_link btn btn-default fa fa-envelope fa-lg' href=''  shareType="bookmark-current"> Bookmark Current Page</a>
+
+<a id='bookmarkthis' class='social_share_link btn btn-default fa fa-envelope fa-lg' href=''  shareType="bookmark"> Bookmark Page</a>
+
+
 
 <br>
 <br>
@@ -157,7 +165,7 @@ var shared_data = {
 <script type='text/javascript' src='assets/supershare.js'></script>
 <script type="text/javascript">
   var shared_data = {
-    url         : "http://ahmed-badawy.com/site/cv",
+    url         : "file:///E:/xampp4/htdocs/_GitHub-Projects/Sharing-Buttons/index.html",
     title       : "Ahmed-Badawy's C.V (Please Read Me)",
     text        : " -!--Ahmed Badawy - أحمد بدوى--!- Hello! This is My C.V : http://ahmed-badawy.com/site/cv",
     img         : "http://ahmed-badawy.com/site/public/site-imgs/site/logo.jpg",
@@ -187,14 +195,21 @@ var shared_data = {
     var tags = document.getElementsByClassName('social_share_link');
     for(var i=0, n=tags.length; i<n ; i++){
       tags[i].addEventListener('click',function(evt){
-            evt.preventDefault();
             share_type = this.getAttribute('shareType');
             link = get_share_link(share_type,shared_data);
-            centeredPopup(link, Math.random()+"toString");
+            if(link) centeredPopup(link, Math.random()+"toString");
+						else return false;
+						evt.preventDefault();
             return false;
       },false);
     }
 
+		document.addEventListener('load',function(e){
+			get_add_to_bookmarks_link(shared_data)
+		},false)
+		document.getElementById('bookmark_link').addEventListener('click',function(e){
+			e.preventDefault();
+		},false)
 </script>
 
 
