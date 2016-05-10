@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+	<h1 id='url'></h1>
+<canvas id="barcode"></canvas>
+<h1>Just Save The Image</h1>
+
+
+<script type="text/javascript" src='assets/JsBarcode.min.js'></script>
+<script type="text/javascript">
+// new QRCode(document.getElementById("qrcode"), "Ahmed Badawy");
+
+function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
+
+var link = getParameterByName('url');
+document.getElementById('url').innerHTML = link;
+
+
+JsBarcode('#barcode', link);
+// JsBarcode(document.getElementById('barcode'), link);
+
+
+</script>
+
+</body>
+</html>

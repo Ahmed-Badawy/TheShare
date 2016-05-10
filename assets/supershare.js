@@ -78,10 +78,10 @@
 
 
 
-//---------------------Android----------------------
+//---------------------Mobile----------------------
 		else if(share_type=="whatsapp") $link = `whatsapp://send?text=${shared_data.text}`;
 
-    else if(share_type=="call_phone") $link = `tel:${shared_data.android_phone_num}`;
+    else if(share_type=="call_phone") $link = `tel:${shared_data.phone_num}`;
 
     else if(share_type=="internet_call") $link = `callTo:${shared_data.phone_num}`;
 
@@ -89,11 +89,16 @@
 
     else if(share_type=="google_maps") $link = `geo:${shared_data.google_maps_acc}`;
 
-    else if(share_type=="line") $link = `https://line.me/en-US/?${shared_data.prepared_text}`
-    //http://line.me/en-US/?Sharer.js%2520is%2520the%2520ultimate%2520sharer%2520js%2520lib%2520https%253A%252F%252Fellisonleao.github.io%252Fsharer.js%252F
-    
-//---------------------IOS----------------------
+    else if(share_type=="line-phone") $link = `line://msg/text/${shared_data.prepared_text}`;
+    // else if(share_type=="line-web") $link = `http://line.me/R/msg/text/?${shared_data.prepared_text}`;
+
+
     else if(share_type=="telegram") $link = `tg://msg?text=${shared_data.text}`;
+//--------------------------------------------------
+
+//---------------------Codes----------------------
+    else if(share_type=="qr") $link = `qr.html?url=${shared_data.url}`;
+    else if(share_type=="barcode") $link = `barcode.html?url=${shared_data.url}`;
 //--------------------------------------------------
 
 
