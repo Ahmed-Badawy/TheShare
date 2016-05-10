@@ -1,11 +1,12 @@
 
 
-  function get_share_link(share_type,shared_data){
+  function get_share_link(evt,share_type,shared_data){
 
-		shared_data.prepared_url = encodeURIComponent(shared_data.url);
-		shared_data.prepared_img = encodeURIComponent(shared_data.img);
-		shared_data.prepared_title = encodeURIComponent(shared_data.title);
-		shared_data.prepared_text = encodeURIComponent(shared_data.text);
+		shared_data.prepared_url          = encodeURIComponent(shared_data.url);
+		shared_data.prepared_img          = encodeURIComponent(shared_data.img);
+		shared_data.prepared_title        = encodeURIComponent(shared_data.title);
+		shared_data.prepared_text         = encodeURIComponent(shared_data.text);
+		shared_data.prepared_facebook_redirect_uri = encodeURIComponent(shared_data.facebook_redirect_uri);
 
     var $link;
 
@@ -13,7 +14,7 @@
 
     else if(share_type=='facebook') $link= `http://www.facebook.com/sharer.php?s=100&p[url]=${shared_data.prepared_url}&p[images][0]=${shared_data.prepared_img}&p[title]=${shared_data.prepared_title}&p[summary]=${shared_data.prepared_text}`;
 
-		else if(share_type=='facebook-dialog') $link= `https://www.facebook.com/dialog/share?app_id=${shared_data.facebook_app_id}&display=page&href=${shared_data.prepared_url}&redirect_uri=${shared_data.facebook_redirect_uri}`;
+		else if(share_type=='facebook-dialog') $link= `https://www.facebook.com/dialog/share?app_id=${shared_data.facebook_app_id}&display=page&href=${shared_data.prepared_url}&redirect_uri=${shared_data.prepared_facebook_redirect_uri}`;
 
     else if(share_type=='twitter') $link=  `https://twitter.com/intent/tweet?url=${shared_data.prepared_url}&text=${shared_data.prepared_title}&via=${shared_data.twitter_via}&hashtags=${shared_data.tags}&related=${shared_data.twitter_related}`;
 		// if(share_type=="twitter") $link = "http://twitter.com/home?status="+shared_data.text;
@@ -77,9 +78,8 @@
 
     else if(share_type=="print") { window.print(); return false; }
 
-    else if(share_type=="bookmark") { get_add_to_bookmarks_link(shared_data); return false; }
-    else if(share_type=="bookmark-current") { get_add_to_bookmarks_link(false); return false; }
-
+    else if(share_type=="bookmark") { get_add_to_bookmarks_link(evt,shared_data); return false; }
+    else if(share_type=="bookmark-current") { get_add_to_bookmarks_link(evt,false); return false; }
 
 
 //---------------------Mobile----------------------
@@ -109,6 +109,7 @@
       return $link;
   }
 
+
     function centeredPopup(url,winName){
 			var w = 800, h = 600;
       LeftPosition = (screen.width) ? (screen.width-w)/2 : 0;
@@ -118,7 +119,8 @@
     }
 
 
-    function get_add_to_bookmarks_link(shared_data){
+
+    function get_add_to_bookmarks_link(evt,shared_data){
       if(shared_data){
         var bookmarkURL = shared_data.url;
         var bookmarkTitle = shared_data.title;
@@ -135,15 +137,9 @@
         window.sidebar.addPanel(bookmarkTitle, bookmarkURL, '');
       } else if ((window.sidebar && /Firefox/i.test(navigator.userAgent)) || (window.opera && window.print)) {
         // Firefox version >= 23 and Opera Hotlist
-        console.log("hello");
-        document.getElementById('bookmarkthis').setAttribute('href',bookmarkURL)
-        document.getElementById('bookmarkthis').setAttribute('title',bookmarkTitle);
-        document.getElementById('bookmarkthis').setAttribute('rel',"sidebar");
-          // $('#bookmarkthis').attr({
-          //   href: bookmarkURL,
-          //   title: bookmarkTitle,
-          //   rel: 'sidebar'
-          // }).off(e);
+        evt.target.setAttribute('href',bookmarkURL)
+        evt.target.setAttribute('title',bookmarkTitle);
+        evt.target.setAttribute('rel',"sidebar");
         return true;
       } else if (window.external && ('AddFavorite' in window.external)) {
         // IE Favorite

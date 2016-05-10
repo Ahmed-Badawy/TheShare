@@ -7,7 +7,16 @@
 
 	<h1 id='url'></h1>
 <canvas id="barcode"></canvas>
-<h1>Just Save The Image</h1>
+<h3>Just Save The Image</h3>
+
+
+<hr>
+<h1>Generate Code To: </h1>
+
+<form action="#" method='GET'>
+	URL: <input type="text" id='main_url' name='url' style='width:400px'>
+	<button type='submit'>Submit</button>
+</form>
 
 
 <script type="text/javascript" src='assets/JsBarcode.min.js'></script>
@@ -26,6 +35,7 @@ function getParameterByName(name, url) {
 
 var link = getParameterByName('url');
 document.getElementById('url').innerHTML = link;
+document.getElementById('main_url').value = link;
 
 
 JsBarcode('#barcode', link);
