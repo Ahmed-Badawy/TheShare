@@ -1,29 +1,31 @@
 <!DOCTYPE html>
-<html>
-<head>
-	<meta charset='utf-8'>
-	<title>Sharing Buttons</title>
+<html lang="en">
+  <head>
+    <!-- Required meta tags always come first -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
 
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+	<link rel="stylesheet" href="assets/css/font-awesome.min.css">
 
-<link rel="stylesheet" href="assets/css/bootstrap.min.css">
-<link rel="stylesheet" href="assets/css/bootstrap-theme.min.css">
-
-<link rel="stylesheet" href="assets/css/font-awesome.min.css">
-
-<style>
-  .btn{
-    margin:10px;
-  }
-
+	<style>
+	.btn{
+		margin:10px;
+	}
 	h3{
 		background-color: #333;
 		color:#fff;
 		padding:10px;
 		border-radius: 10px;
 	}
-</style>
-</head>
-<body>
+	</style>
+
+  </head>
+  <body>
+
+
 
 <br>
 	<div class="container-fluid">
@@ -74,8 +76,6 @@
 <a class='TheShare_link_class btn btn-default btn-lg fa fa-delicious fa-lg' href='' shareType="delicious">  Delicious</a>
 
 <a class='TheShare_link_class btn btn-default btn-lg fa fa-question fa-lg' href='' shareType="hackernews">  Hackernews</a>
-<a class='TheShare_link_class btn btn-default btn-lg fa fa-question fa-lg' href='' shareType="instapaper">  Instapaper</a>
-<a class='TheShare_link_class btn btn-default btn-lg fa fa-get-pocket fa-lg' href='' shareType="pocket">  Pocket</a>
 <a class='TheShare_link_class btn btn-default btn-lg fa fa-question fa-lg' href='' shareType="flipboard">  Flipboard</a>
 <a class='TheShare_link_class btn btn-default btn-lg fa fa-weibo fa-lg' href='' shareType="weibo">  Weibo</a>
 <a class='TheShare_link_class btn btn-default btn-lg fa fa-renren fa-lg' href='' shareType="renren">  Renren</a>
@@ -90,13 +90,18 @@
 <div class="clearfix"></div><hr>
 <h3><span class='fa fa-lg fa-cog'></span> Multifarious Methods</h3>
 
+
 <a class='TheShare_link_class btn btn-default btn-lg fa fa-envelope fa-lg' href='' shareType="email"> Send Email</a>
+<a class='TheShare_link_class btn btn-default btn-lg fa fa-envelope fa-lg' href='' shareType="gmail"> Send with Gmail</a>
+<br>
 
 <a class='TheShare_link_class btn btn-default btn-lg fa fa-print fa-lg' href="" shareType="print"> Print Current Page</a>
-
 <a id='bookmarkthis' class='TheShare_link_class btn btn-default btn-lg fa fa-envelope fa-lg' href=''  shareType="bookmark-current"> Bookmark Current Page</a>
-
 <a id='bookmarkthis' class='TheShare_link_class btn btn-default btn-lg fa fa-envelope fa-lg' href=''  shareType="bookmark"> Bookmark Predefined Page</a>
+<br>
+
+<a class='TheShare_link_class btn btn-default btn-lg fa fa-question fa-lg' href='' shareType="instapaper">  Save To Instapaper</a>
+<a class='TheShare_link_class btn btn-default btn-lg fa fa-get-pocket fa-lg' href='' shareType="pocket">  Save To Pocket</a>
 
 
 <p class='well well-ms'><b>Bookmarks works properly only on Firefox. In chrome it will only prompt the user to press ( CTRL+D )</b></p>
@@ -117,7 +122,7 @@
 Scema:
 skype:<username|phonenumber>[?[add|call|chat|sendfile|userinfo]]
 -->
-<a class='TheShare_link_class btn btn-default btn-lg fa fa-phone fa-lg' href='' shareType='skype'>Skype Me</a>
+<a class='TheShare_link_class btn btn-default btn-lg fa fa-phone fa-lg' href='' shareType='skype'> Skype Me</a>
 
 <a class='TheShare_link_class btn btn-default btn-lg fa fa-phone fa-lg' href='' shareType="viber"> Viber (add then call)</a>
 
@@ -231,6 +236,5 @@ var shared_data = {
 
 
 
-
-</body>
+  </body>
 </html>
