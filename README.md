@@ -3,9 +3,10 @@
 #### It's a social sharing code that help you to share all you want over the internet to all known social websites. 
 
 #### You can use it in your webpages to easily add (share this) buttons. 
+[Website](http://ahmed-badawy.com/extensions/TheShare)
+
 
 I also used it to create a chrome  extension & an opera extension with the purpose of simplifying the sharing process. with the plugins you can easily share any ( link / image / video / audio / text ) over the internet in a matter of seconds. 
-
 [Chrome Extension Link](https://chrome.google.com/webstore/detail/theshare/ighbcekeolbcaimlofkjjmnkejlnelaf)
 
 
